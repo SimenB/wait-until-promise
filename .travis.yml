@@ -5,7 +5,7 @@ node_js:
   - 0.12
 addons:
   code_climate:
-    repo_token: d3494c5bb5f3df7d98635dbc2aa962c7ce5e14c61f574a8c7304dfa9bc8783e4
+    repo_token: bed43b4e75bf2687e85bbda02fea8033552d79331e070a22726846bf39e1d0f1
 script: npm run cover
 after_success:
   - cat coverage/lcov.info | node_modules/.bin/coveralls --verbose
