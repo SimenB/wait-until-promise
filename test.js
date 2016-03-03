@@ -1,6 +1,7 @@
 /* eslint-env mocha */
 
 import assert from 'assert'
+import sinon from 'sinon'
 
 import waitUntilPromise, { setPromiseImplementation } from './waitUntilPromise'
 
@@ -67,5 +68,36 @@ describe('wait-until-promise', () => {
     // Skip escape hatch
     waitUntilPromise(() => count++ > 0, 10, 15)
       .catch(() => done())
+  })
+
+  it('should not call setTimeout or setInterval if function immediately returns truthy', () => {
+    sinon.spy(global, 'setTimeout')
+    sinon.spy(global, 'setInterval')
+
+    return waitUntilPromise(() => true)
+      .then(() => {
+        sinon.assert.callCount(global.setTimeout, 0)
+        sinon.assert.callCount(global.setInterval, 0)
+      })
+      .then(() => {
+        global.setTimeout.restore()
+        global.setInterval.restore()
+      })
+  })
+
+  it('should call setTimeout or setInterval once if function returns truthy', () => {
+    let count = 0
+    sinon.spy(global, 'setTimeout')
+    sinon.spy(global, 'setInterval')
+
+    return waitUntilPromise(() => count++ > 0)
+      .then(() => {
+        sinon.assert.callCount(global.setTimeout, 1)
+        sinon.assert.callCount(global.setInterval, 1)
+      })
+      .then(() => {
+        global.setTimeout.restore()
+        global.setInterval.restore()
+      })
   })
 })
