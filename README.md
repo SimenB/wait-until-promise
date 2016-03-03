@@ -22,7 +22,7 @@ import $ from 'jquery';
 import waitUntil from 'wait-until-promise';
 
 describe('some thing', () => {
-  it('should to something', (done) => {
+  it('should do something', (done) => {
     const button = $('#button');
     const paragraph = $('p');
 
@@ -30,6 +30,18 @@ describe('some thing', () => {
 
     waitUntil(() => paragraph.text() === 'button clicked')
       .then(() => done());
+  })
+
+  // The promise is resolved with the return-value. Useful to if you want to
+  // wait until something exists, then make assertions on it
+  it('should do something else', (done) => {
+    const button = $('#button');
+    const paragraph = $('p');
+
+    button.click();
+
+    waitUntil(() => paragraph.text())
+      .then((text) => expect(test).toBe('The text in the paragraph'));
   })
 })
 ```
@@ -46,7 +58,8 @@ such as Bluebird or other A* implementations.
 Type: `function`, mandatory
 
 The function used to check if the promise should be resolved. It has to return
-a truthy value to successfully resolve.
+a truthy value to successfully resolve. The promise is resolved with the value
+returned
 
 #### `maxWait`
 Type: `integer`, default: `50`

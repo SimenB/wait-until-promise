@@ -14,10 +14,18 @@ export default function (escapeFunction, maxWait = 50, checkDelay = 1) {
     let maxWaitTimeout
 
     const interval = setInterval(() => {
-      if (escapeFunction()) {
+      try {
+        const escapeFunctionRes = escapeFunction()
+
+        if (escapeFunctionRes) {
+          clearTimers(maxWaitTimeout, interval)
+
+          resolve(escapeFunctionRes)
+        }
+      } catch (e) {
         clearTimers(maxWaitTimeout, interval)
 
-        resolve()
+        reject(e)
       }
     }, checkDelay)
 

@@ -9,26 +9,22 @@ describe('wait-until-promise', () => {
     setPromiseImplementation(Promise)
   })
 
-  it('resolve if function returns true', (done) => {
-    waitUntilPromise(() => true)
-      .then(() => done())
+  it('resolve if function returns true', () => {
+    return waitUntilPromise(() => true)
+  })
+
+  it('resolve with the return value', () => {
+    return waitUntilPromise(() => 'this is a truthy value')
+      .then((returnValue) => assert.equal(returnValue, 'this is a truthy value'))
   })
 
   it('reject if function returns false', (done) => {
     waitUntilPromise(() => false)
-      .catch(() => done())
-  })
+      .catch((err) => {
+        assert.equal(err, 'Wait until promise timed out')
 
-  it('should allow setting custom Promise implementation', () => {
-    let invocations = 0
-    const spy = function () {
-      invocations++
-    }
-
-    setPromiseImplementation(spy)
-    waitUntilPromise()
-
-    assert.equal(invocations, 1, 'should invoke constructor once')
+        done()
+      })
   })
 
   it('should allow setting custom Promise implementation', () => {
@@ -50,14 +46,26 @@ describe('wait-until-promise', () => {
       .catch(() => {
         const timeTaken = new Date() - start
 
-        assert(timeTaken < 15, 'should time out in less than 15 ms')
+        assert.ok(timeTaken < 15, 'should time out in less than 15 ms')
+
+        done()
+      })
+  })
+
+  it('should reject with the exception if the functions throws', (done) => {
+    waitUntilPromise(() => ({}).someFunction())
+      .catch((err) => {
+        assert.ok(/\.someFunction is not a function/.test(err.message))
 
         done()
       })
   })
 
   it('should reject if checkInterval is larger than timeout', (done) => {
-    waitUntilPromise(() => true, 10, 15)
+    let count = 0
+
+    // Skip escape hatch
+    waitUntilPromise(() => count++ > 0, 10, 15)
       .catch(() => done())
   })
 })
