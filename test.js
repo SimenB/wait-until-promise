@@ -100,4 +100,19 @@ describe('wait-until-promise', () => {
         global.setInterval.restore()
       })
   })
+
+  it('should reject in timer if function throws', (done) => {
+    let count = 0
+
+    return waitUntilPromise(() => {
+      if (count++ === 0) return false;
+
+      ({}).someFunction()
+    })
+      .catch((err) => {
+        assert.ok(/is not a function/.test(err.message))
+
+        done()
+      })
+  })
 })
