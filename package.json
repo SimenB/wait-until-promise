@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/SimenB/wait-until-promise#readme",
   "devDependencies": {
-    "babel-cli": "^6.6.0",
+    "babel-cli": "^6.6.4",
     "babel-istanbul": "^0.6.1",
     "babel-plugin-transform-es2015-arrow-functions": "^6.5.2",
     "babel-plugin-transform-es2015-block-scoping": "^6.6.0",
