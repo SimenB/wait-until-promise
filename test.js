@@ -56,7 +56,7 @@ describe('wait-until-promise', () => {
   it('should reject with the exception if the functions throws', (done) => {
     waitUntilPromise(() => ({}).someFunction())
       .catch((err) => {
-        assert.ok(/\.someFunction is not a function/.test(err.message))
+        assert.ok(/is not a function/.test(err.message))
 
         done()
       })
