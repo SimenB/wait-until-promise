@@ -21,6 +21,7 @@ describe('wait-until-promise', () => {
 
   it('reject if function returns false', (done) => {
     waitUntilPromise(() => false)
+      .then(() => done(new Error('it should reject')))
       .catch((err) => {
         assert.equal(err, 'Wait until promise timed out')
 
@@ -29,45 +30,58 @@ describe('wait-until-promise', () => {
   })
 
   it('should allow setting custom Promise implementation', () => {
-    let invocations = 0
-    const spy = function () {
-      invocations++
-    }
+    const spy = sinon.spy()
 
     setPromiseImplementation(spy)
     waitUntilPromise()
 
-    assert.equal(invocations, 1, 'should invoke constructor once')
+    assert.ok(spy.calledWithNew)
   })
 
-  it('should allow setting custom maxWait', (done) => {
-    const start = new Date()
+  it('should allow setting custom maxWait', () => {
+    let count = 0
+    sinon.spy(global, 'setTimeout')
+    sinon.spy(global, 'setInterval')
 
-    waitUntilPromise(() => false, 10)
-      .catch(() => {
-        const timeTaken = new Date() - start
+    return waitUntilPromise(() => count++ > 0, 32)
+      .then(() => {
+        assert.ok(global.setTimeout.calledOnce)
+        assert.ok(global.setInterval.calledOnce)
 
-        assert.ok(timeTaken < 15, 'should time out in less than 15 ms')
+        assert.equal(global.setTimeout.getCall(0).args[1], 32)
+      })
+      .then(() => {
+        global.setTimeout.restore()
+        global.setInterval.restore()
+      })
+  })
 
-        done()
+  it('should allow setting custom checkDelay', () => {
+    let count = 0
+    sinon.spy(global, 'setTimeout')
+    sinon.spy(global, 'setInterval')
+
+    return waitUntilPromise(() => count++ > 0, undefined, 32)
+      .then(() => {
+        assert.ok(global.setTimeout.calledOnce)
+        assert.ok(global.setInterval.calledOnce)
+
+        assert.equal(global.setInterval.getCall(0).args[1], 32)
+      })
+      .then(() => {
+        global.setTimeout.restore()
+        global.setInterval.restore()
       })
   })
 
   it('should reject with the exception if the functions throws', (done) => {
     waitUntilPromise(() => ({}).someFunction())
+      .then(() => done(new Error('it should reject')))
       .catch((err) => {
         assert.ok(/is not a function/.test(err.message))
 
         done()
       })
-  })
-
-  it('should reject if checkInterval is larger than timeout', (done) => {
-    let count = 0
-
-    // Skip escape hatch
-    waitUntilPromise(() => count++ > 0, 10, 15)
-      .catch(() => done())
   })
 
   it('should not call setTimeout or setInterval if function immediately returns truthy', () => {
@@ -76,8 +90,8 @@ describe('wait-until-promise', () => {
 
     return waitUntilPromise(() => true)
       .then(() => {
-        sinon.assert.callCount(global.setTimeout, 0)
-        sinon.assert.callCount(global.setInterval, 0)
+        sinon.assert.notCalled(global.setTimeout)
+        sinon.assert.notCalled(global.setInterval)
       })
       .then(() => {
         global.setTimeout.restore()
@@ -109,6 +123,7 @@ describe('wait-until-promise', () => {
 
       ({}).someFunction()
     })
+      .then(() => done(new Error('it should reject')))
       .catch((err) => {
         assert.ok(/is not a function/.test(err.message))
 
