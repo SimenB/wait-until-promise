@@ -5,7 +5,7 @@ function clearTimers (timeout, interval) {
   clearInterval(interval)
 }
 
-export const setPromiseImplementation = (implementation) => {
+export const setPromiseImplementation = implementation => {
   PromiseImplementation = implementation
 }
 
