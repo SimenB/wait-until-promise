@@ -6,7 +6,7 @@ node_js:
 addons:
   code_climate:
     repo_token: bed43b4e75bf2687e85bbda02fea8033552d79331e070a22726846bf39e1d0f1
-script: npm run cover
+script: npm run travis
 after_success:
   - cat coverage/lcov.info | node_modules/.bin/coveralls --verbose
   - codeclimate-test-reporter < coverage/lcov.info
