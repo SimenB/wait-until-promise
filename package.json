@@ -3,6 +3,7 @@
   "version": "0.0.2",
   "description": "A simple utilty to wait until condition is true, returning a promise",
   "main": "index.js",
+  "files": ["index.js"],
   "scripts": {
     "clean": "rimraf coverage/ .nyc_output/ index.js",
     "compile": "babel waitUntilPromise.js -o index.js",
