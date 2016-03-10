@@ -41,7 +41,7 @@ export default function (escapeFunction, maxWait = 50, checkDelay = 1) {
     maxWaitTimeout = setTimeout(() => {
       clearTimers(maxWaitTimeout, interval)
 
-      reject('Wait until promise timed out')
+      reject(new Error('Wait until promise timed out'))
     }, maxWait)
   })
 }
