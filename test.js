@@ -4,7 +4,7 @@ import 'babel-register'
 
 import waitUntilPromise, { setPromiseImplementation } from './waitUntilPromise'
 
-test.beforeEach(() => {
+test.beforeEach('before', () => {
   setPromiseImplementation(Promise)
 })
 
@@ -13,7 +13,7 @@ test('resolve if function returns true', () => {
 })
 
 test('resolve with the return value', async t => {
-  t.is(await waitUntilPromise(() => 'this is a truthy value'), 'this is a truthy value')
+  t.ok(await waitUntilPromise(() => 'this is a truthy value'), 'this is a truthy value')
 })
 
 test('reject if function returns false', t => {
@@ -39,7 +39,7 @@ test.serial('should allow setting custom maxWait', async t => {
   t.ok(global.setTimeout.calledOnce)
   t.ok(global.setInterval.calledOnce)
 
-  t.is(global.setTimeout.getCall(0).args[1], 32)
+  t.ok(global.setTimeout.getCall(0).args[1], 32)
 
   global.setTimeout.restore()
   global.setInterval.restore()
@@ -55,7 +55,7 @@ test.serial('should allow setting custom checkDelay', async t => {
   t.ok(global.setTimeout.calledOnce)
   t.ok(global.setInterval.calledOnce)
 
-  t.is(global.setInterval.getCall(0).args[1], 32)
+  t.ok(global.setInterval.getCall(0).args[1], 32)
 
   global.setTimeout.restore()
   global.setInterval.restore()
