@@ -1,4 +1,16 @@
-let PromiseImplementation = Promise
+let PromiseImplementation
+
+try {
+  PromiseImplementation = Promise
+} catch (err) {
+}
+
+if (PromiseImplementation == null && console) {
+  const warningMessage = 'Wait Until Promise: No global Promise available, make sure to use `setPromiseImplementation`.'
+
+  if (console.warn) console.warn(warningMessage)
+  else console.log(warningMessage)
+}
 
 function clearTimers (timeout, interval) {
   clearTimeout(timeout)
