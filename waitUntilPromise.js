@@ -21,7 +21,7 @@ export const setPromiseImplementation = implementation => {
   PromiseImplementation = implementation
 }
 
-export default function (escapeFunction, maxWait = 50, checkDelay = 1) {
+export default (escapeFunction, maxWait = 50, checkDelay = 1) => {
   // Run the function once without setting up any listeners in case it's already true
   try {
     const escapeFunctionRes = escapeFunction()

@@ -10,6 +10,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - Don't create a new `Promise` if function immediately resolves
 
+#### Internal
+- Return arrow function instead of a normal function to work around a
+[babel bug](https://phabricator.babeljs.io/T7227) with escaped keywords
+
 ## [0.0.2] - 2016-03-03
 Initial release
 
