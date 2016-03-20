@@ -5,6 +5,7 @@ try {
 } catch (err) {
 }
 
+/* istanbul ignore next */
 if (PromiseImplementation == null && console) {
   const warningMessage = 'Wait Until Promise: No global Promise available, make sure to use `setPromiseImplementation`.'
 
