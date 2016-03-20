@@ -3,7 +3,8 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
-Nothing
+### Changed
+- Fix URLs in change log
 
 ## [0.1.0] - 2016-03-20
 ### Added
@@ -21,6 +22,6 @@ Nothing
 Initial release
 
 
-[Unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.2...v0.1.0
-[0.0.2]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.1...v0.0.2
+[Unreleased]: https://github.com/SimenB/wait-until-promise/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/SimenB/wait-until-promise/compare/v0.0.2...v0.1.0
+[0.0.2]: https://github.com/SimenB/wait-until-promise/compare/https://github.com/SimenB/wait-until-promise/compare/6784c668df6601aa00743ede13fba40526ea09b1...v0.0.2
