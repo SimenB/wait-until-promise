@@ -22,17 +22,17 @@ export const setPromiseImplementation = implementation => {
 }
 
 export default function (escapeFunction, maxWait = 50, checkDelay = 1) {
+  // Run the function once without setting up any listeners in case it's already true
+  try {
+    const escapeFunctionRes = escapeFunction()
+
+    if (escapeFunctionRes) return PromiseImplementation.resolve(escapeFunctionRes)
+  } catch (e) {
+    return PromiseImplementation.reject(e)
+  }
+
   return new PromiseImplementation((resolve, reject) => {
     let maxWaitTimeout
-
-    // Run the function once without setting up any listeners in case it's already true
-    try {
-      const escapeFunctionRes = escapeFunction()
-
-      if (escapeFunctionRes) return resolve(escapeFunctionRes)
-    } catch (e) {
-      return reject(e)
-    }
 
     const interval = setInterval(() => {
       try {

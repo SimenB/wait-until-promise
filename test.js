@@ -21,12 +21,13 @@ test('reject if function returns false', t => {
 })
 
 test('should allow setting custom Promise implementation', t => {
-  const spy = sinon.spy()
+  const resolve = sinon.spy()
 
-  setPromiseImplementation(spy)
-  waitUntilPromise()
+  setPromiseImplementation({ resolve })
 
-  t.ok(spy.calledWithNew)
+  waitUntilPromise(() => true)
+
+  t.ok(resolve.called)
 })
 
 test.serial('should allow setting custom maxWait', async t => {

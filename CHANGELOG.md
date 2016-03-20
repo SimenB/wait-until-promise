@@ -7,6 +7,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - A Changelog!
 - Print warning if `Promise` is not available
 
+### Changed
+- Don't create a new `Promise` if function immediately resolves
+
 ## [0.0.2] - 2016-03-03
 Initial release
 
