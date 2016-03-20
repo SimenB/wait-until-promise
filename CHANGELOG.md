@@ -28,4 +28,4 @@ Initial release
 [Unreleased]: https://github.com/SimenB/wait-until-promise/compare/v0.1.1...HEAD
 [0.1.1]: https://github.com/SimenB/wait-until-promise/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/SimenB/wait-until-promise/compare/v0.0.2...v0.1.0
-[0.0.2]: https://github.com/SimenB/wait-until-promise/compare/https://github.com/SimenB/wait-until-promise/compare/6784c668df6601aa00743ede13fba40526ea09b1...v0.0.2
+[0.0.2]: https://github.com/SimenB/wait-until-promise/compare/6784c668df6601aa00743ede13fba40526ea09b1...v0.0.2
