@@ -72,6 +72,10 @@ Type: `integer`, default: `1`
 The interval to wait between each invocation of `escapeFunction`.
 
 
+## Change log
+See [CHANGELOG.md](CHANGELOG.md)
+
+
 [travis-url]: https://travis-ci.org/SimenB/wait-until-promise
 [travis-image]: https://img.shields.io/travis/SimenB/wait-until-promise.svg
 [appveyor-url]: https://ci.appveyor.com/project/SimenB/wait-until-promise
