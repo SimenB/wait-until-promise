@@ -35,7 +35,7 @@
   },
   "homepage": "https://github.com/SimenB/wait-until-promise#readme",
   "devDependencies": {
-    "ava": "^0.13.0",
+    "ava": "^0.14.0",
     "babel-cli": "^6.6.5",
     "babel-eslint": "^6.0.0-beta.6",
     "babel-plugin-transform-es2015-arrow-functions": "^6.5.2",
