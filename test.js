@@ -13,7 +13,10 @@ test('resolve if function returns true', () => {
 })
 
 test('resolve with the return value', async t => {
-  t.ok(await waitUntilPromise(() => 'this is a truthy value'), 'this is a truthy value')
+  t.truthy(
+    await waitUntilPromise(() => 'this is a truthy value'),
+    'this is a truthy value'
+  )
 })
 
 test('reject if function returns false', t => {
@@ -27,7 +30,7 @@ test('should allow setting custom Promise implementation', t => {
 
   waitUntilPromise(() => true)
 
-  t.ok(resolve.called)
+  t.truthy(resolve.called)
 })
 
 test.serial('should allow setting custom maxWait', async t => {
@@ -37,10 +40,10 @@ test.serial('should allow setting custom maxWait', async t => {
 
   await waitUntilPromise(() => count++ > 0, 32)
 
-  t.ok(global.setTimeout.calledOnce)
-  t.ok(global.setInterval.calledOnce)
+  t.truthy(global.setTimeout.calledOnce)
+  t.truthy(global.setInterval.calledOnce)
 
-  t.ok(global.setTimeout.getCall(0).args[1], 32)
+  t.truthy(global.setTimeout.getCall(0).args[1], 32)
 
   global.setTimeout.restore()
   global.setInterval.restore()
@@ -53,10 +56,10 @@ test.serial('should allow setting custom checkDelay', async t => {
 
   await waitUntilPromise(() => count++ > 0, undefined, 32)
 
-  t.ok(global.setTimeout.calledOnce)
-  t.ok(global.setInterval.calledOnce)
+  t.truthy(global.setTimeout.calledOnce)
+  t.truthy(global.setInterval.calledOnce)
 
-  t.ok(global.setInterval.getCall(0).args[1], 32)
+  t.truthy(global.setInterval.getCall(0).args[1], 32)
 
   global.setTimeout.restore()
   global.setInterval.restore()
