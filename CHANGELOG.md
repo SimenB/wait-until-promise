@@ -3,7 +3,9 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
-Nothing
+### Changed
+- Throw error if no `Promise` available on invocation, instead of warning on at
+first invocation
 
 ## [0.1.1] - 2016-03-20
 ### Changed

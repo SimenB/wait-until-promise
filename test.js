@@ -1,7 +1,6 @@
 import test from 'ava'
 import sinon from 'sinon'
 import 'babel-register'
-
 import waitUntilPromise, { setPromiseImplementation } from './waitUntilPromise'
 
 test.beforeEach('before', () => {
@@ -108,4 +107,10 @@ test('should reject in timer if function throws', t => {
   })
 
   t.throws(prom, /is not a function/)
+})
+
+test.serial('should throw if no Promise is available', t => {
+  setPromiseImplementation(null)
+
+  t.throws(() => waitUntilPromise(() => true), /Wait Until Promise: No global Promise available/)
 })

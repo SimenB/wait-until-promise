@@ -5,14 +5,6 @@ try {
 } catch (err) {
 }
 
-/* istanbul ignore next */
-if (PromiseImplementation == null && console) {
-  const warningMessage = 'Wait Until Promise: No global Promise available, make sure to use `setPromiseImplementation`.'
-
-  if (console.warn) console.warn(warningMessage)
-  else console.log(warningMessage)
-}
-
 function clearTimers (timeout, interval) {
   clearTimeout(timeout)
   clearInterval(interval)
@@ -23,6 +15,10 @@ export const setPromiseImplementation = implementation => {
 }
 
 export default (escapeFunction, maxWait = 50, checkDelay = 1) => {
+  if (PromiseImplementation == null) {
+    throw new Error('Wait Until Promise: No global Promise available, make sure to use `setPromiseImplementation`.')
+  }
+
   // Run the function once without setting up any listeners in case it's already true
   try {
     const escapeFunctionRes = escapeFunction()
