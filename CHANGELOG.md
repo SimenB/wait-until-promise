@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - Throw error if no `Promise` available on invocation, instead of warning on at
 first invocation
+- Reject with a `TimeoutError`, like Bluebird provides, if available
 
 ## [0.1.1] - 2016-03-20
 ### Changed

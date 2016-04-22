@@ -50,7 +50,12 @@ export default (escapeFunction, maxWait = 50, checkDelay = 1) => {
     maxWaitTimeout = setTimeout(() => {
       clearTimers(maxWaitTimeout, interval)
 
-      reject(new Error('Wait until promise timed out'))
+      // Try to reject with a TimeoutError, like Bluebird has
+      if (PromiseImplementation.TimeoutError) {
+        reject(new PromiseImplementation.TimeoutError('Wait until promise timed out'))
+      } else {
+        reject(new Error('Wait until promise timed out'))
+      }
     }, maxWait)
   })
 }

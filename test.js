@@ -1,5 +1,6 @@
 import test from 'ava'
 import sinon from 'sinon'
+import BluebirdPromise from 'bluebird'
 import 'babel-register'
 import waitUntilPromise, { setPromiseImplementation } from './waitUntilPromise'
 
@@ -113,4 +114,16 @@ test.serial('should throw if no Promise is available', t => {
   setPromiseImplementation(null)
 
   t.throws(() => waitUntilPromise(() => true), /Wait Until Promise: No global Promise available/)
+})
+
+test.serial('should reject with TimeoutError if available', async t => {
+  t.plan(1)
+
+  setPromiseImplementation(BluebirdPromise)
+
+  try {
+    await waitUntilPromise(() => false)
+  } catch (e) {
+    t.truthy(e instanceof BluebirdPromise.TimeoutError)
+  }
 })
