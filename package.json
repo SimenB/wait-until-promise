@@ -18,7 +18,8 @@
     "pretravis": "npm run lint",
     "precover": "npm run clean",
     "prelint": "npm run clean",
-    "prepublish": "not-in-install && npm run compile && npm run doc || echo this is npm install",
+    "prepublish": "not-in-install && npm run compile && npm run doc || in-install",
+    "postpublish": "git push --follow-tags",
     "pretest": "npm run lint",
     "test": "ava",
     "travis": "npm run cover"
