@@ -3,12 +3,12 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
-Nothing
+Generate API documentation using documentation.js
 
 ## [0.1.2] - 2016-04-22
 ### Changed
-- Throw error if no `Promise` available on invocation, instead of warning on at
-first invocation
+- Throw error if no `Promise` available on invocation, instead of warning as a
+side effect of importing the module
 - Reject with a `TimeoutError`, like Bluebird provides, if available
 
 ## [0.1.1] - 2016-03-20

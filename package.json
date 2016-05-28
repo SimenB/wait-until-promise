@@ -4,19 +4,21 @@
   "description": "A simple utilty to wait until condition is true, returning a promise",
   "main": "index.js",
   "files": [
-    "index.js"
+    "index.js",
+    "API.md"
   ],
   "scripts": {
     "clean": "rimraf coverage/ .nyc_output/ index.js",
     "compile": "babel waitUntilPromise.js -o index.js",
     "cover": "nyc ava",
+    "doc": "documentation readme waitUntilPromise.js --readme-file API.md -s API --github",
     "lint": "eslint waitUntilPromise.js test.js",
     "postcover": "nyc report --reporter=html",
     "posttravis": "nyc check-coverage --lines 100 --functions 100 --branches 100 --stmts 100 ava && nyc report --reporter=lcov",
     "pretravis": "npm run lint",
     "precover": "npm run clean",
     "prelint": "npm run clean",
-    "prepublish": "not-in-install && npm run compile || echo this is npm install",
+    "prepublish": "not-in-install && npm run compile && npm run doc || echo this is npm install",
     "pretest": "npm run lint",
     "test": "ava",
     "travis": "npm run cover"
@@ -47,10 +49,12 @@
     "bluebird": "^3.3.5",
     "codeclimate-test-reporter": "^0.3.1",
     "coveralls": "^2.11.9",
+    "documentation": "4.0.0-beta4",
     "eslint": "^2.10.1",
     "eslint-config-standard": "^5.3.1",
     "eslint-plugin-ava": "^2.3.1",
     "eslint-plugin-babel": "^3.2.0",
+    "eslint-plugin-jsdoc": "^2.3.1",
     "eslint-plugin-promise": "^1.1.0",
     "eslint-plugin-standard": "^1.3.2",
     "in-publish": "^2.0.0",

@@ -1,4 +1,5 @@
 # wait-until-promise
+
 > Test utility to simplify waiting for a condition
 
 [![NPM Version][npm-image]][npm-url]
@@ -47,29 +48,7 @@ describe('some thing', () => {
 ```
 
 ## API
-The module provides 2 exports, the `waitUntil` function, and a named export
-`setPromiseImplementation`. By default the global `Promise` is used, but
-`setPromiseImplementation` allows you to pass in any implementation to use,
-such as Bluebird or other A* implementations.
-
-### Arguments for `waitUntil`
-
-#### `escapeFunction`
-Type: `function`, mandatory
-
-The function used to check if the promise should be resolved. It has to return
-a truthy value to successfully resolve. The promise is resolved with the value
-returned
-
-#### `maxWait`
-Type: `integer`, default: `50`
-
-The time to wait before timing out, and rejecting the promise.
-
-#### `checkDelay`
-Type: `integer`, default: `1`
-
-The interval to wait between each invocation of `escapeFunction`.
+See [API.md](API.md)
 
 
 ## Change log

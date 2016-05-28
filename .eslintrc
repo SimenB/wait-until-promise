@@ -1,6 +1,6 @@
 {
   "extends": "standard",
-  "plugins": ["babel", "ava"],
+  "plugins": ["babel", "ava", "jsdoc"],
   "parser": "babel-eslint",
   "rules": {
     "arrow-parens": 0,
@@ -16,6 +16,17 @@
     "ava/test-ended": 2,
     "ava/test-title": [2, "always"],
     "ava/use-t": 2,
-    "ava/use-test": 2
+    "ava/use-test": 2,
+    "jsdoc/check-param-names": 2,
+    "jsdoc/check-tag-names": 2,
+    "jsdoc/check-types": 2,
+    "jsdoc/newline-after-description": 2,
+    "jsdoc/require-description-complete-sentence": 2,
+    "jsdoc/require-hyphen-before-param-description": 2,
+    "jsdoc/require-param": 2,
+    "jsdoc/require-param-description": 2,
+    "jsdoc/require-param-type": 2,
+    "jsdoc/require-returns-description": 2,
+    "jsdoc/require-returns-type": 2
   }
 }
