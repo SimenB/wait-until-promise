@@ -2,7 +2,7 @@
 
 ## setPromiseImplementation
 
-[waitUntilPromise.js:26-28](https://github.com/SimenB/wait-until-promise/blob/4ce94bb2434fd5633d77a4f754b510e98e01939a/waitUntilPromise.js#L26-L28 "Source code on GitHub")
+[waitUntilPromise.js:26-28](https://github.com/SimenB/wait-until-promise/blob/94286abb7c7d7f5fa19e9a615d1b20a3e54d71d5/waitUntilPromise.js#L26-L28 "Source code on GitHub")
 
 Set a custom [Promise](Promise) implementation.
 
@@ -12,7 +12,7 @@ Set a custom [Promise](Promise) implementation.
 
 ## waitUntilPromise
 
-[waitUntilPromise.js:41-85](https://github.com/SimenB/wait-until-promise/blob/4ce94bb2434fd5633d77a4f754b510e98e01939a/waitUntilPromise.js#L41-L85 "Source code on GitHub")
+[waitUntilPromise.js:41-85](https://github.com/SimenB/wait-until-promise/blob/94286abb7c7d7f5fa19e9a615d1b20a3e54d71d5/waitUntilPromise.js#L41-L85 "Source code on GitHub")
 
 Create a [Promise](Promise) that resolves if the given escapeFunction returns a truthy value, and rejects if it throws
 or does not return truthy within the given maxWait.
