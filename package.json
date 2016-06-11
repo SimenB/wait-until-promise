@@ -1,6 +1,6 @@
 {
   "name": "wait-until-promise",
-  "version": "0.1.3",
+  "version": "1.0.0",
   "description": "A simple utilty to wait until condition is true, returning a promise",
   "main": "index.js",
   "files": [
