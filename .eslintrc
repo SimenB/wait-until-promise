@@ -1,9 +1,9 @@
 {
-  "extends": "standard",
+  "extends": "airbnb-base",
   "plugins": ["babel", "ava", "jsdoc"],
   "parser": "babel-eslint",
   "rules": {
-    "arrow-parens": 0,
+    "max-len": ["error", 140],
     "babel/arrow-parens": [2, "as-needed"],
     "ava/no-cb-test": 2,
     "ava/no-identical-title": 2,
