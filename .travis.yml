@@ -1,8 +1,17 @@
 language: node_js
 node_js:
   - node
+  - 5
   - 4
   - 0.12
+os:
+  - linux
+  - osx
+matrix:
+  fast_finish: true
+before_install:
+  - npm install -g npm
+  - npm config set spin false
 addons:
   code_climate:
     repo_token: bed43b4e75bf2687e85bbda02fea8033552d79331e070a22726846bf39e1d0f1
