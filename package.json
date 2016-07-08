@@ -63,5 +63,10 @@
     "rimraf": "^2.5.3",
     "sinon": "^1.17.4"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "ava": {
+    "require": [
+      "babel-register"
+    ]
+  }
 }

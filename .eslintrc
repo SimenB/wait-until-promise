@@ -1,22 +1,15 @@
 {
-  "extends": "airbnb-base",
+  "extends": [
+    "airbnb-base",
+    "plugin:ava/recommended"
+  ],
   "plugins": ["babel", "ava", "jsdoc"],
   "parser": "babel-eslint",
   "rules": {
     "max-len": ["error", 140],
     "babel/arrow-parens": [2, "as-needed"],
     "ava/no-cb-test": 2,
-    "ava/no-identical-title": 2,
-    "ava/no-invalid-end": 2,
-    "ava/no-only-test": 2,
-    "ava/no-skip-assert": 2,
-    "ava/no-skip-test": 2,
-    "ava/no-todo-test": 1,
     "ava/prefer-power-assert": 2,
-    "ava/test-ended": 2,
-    "ava/test-title": [2, "always"],
-    "ava/use-t": 2,
-    "ava/use-test": 2,
     "jsdoc/check-param-names": 2,
     "jsdoc/check-tag-names": 2,
     "jsdoc/check-types": 2,

@@ -3,7 +3,6 @@
 import test from 'ava';
 import sinon from 'sinon';
 import BluebirdPromise from 'bluebird';
-import 'babel-register';
 import waitUntilPromise, { setPromiseImplementation } from './waitUntilPromise';
 
 test.beforeEach('before', () => {
