@@ -59,7 +59,7 @@
     "eslint-plugin-jsdoc": "^2.3.1",
     "in-publish": "^2.0.0",
     "node-version-check": "^2.0.2",
-    "nyc": "^7.0.0-alpha.5",
+    "nyc": "^7.0.0",
     "rimraf": "^2.5.3",
     "sinon": "^1.17.4"
   },
