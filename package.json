@@ -52,7 +52,7 @@
     "coveralls": "^2.11.9",
     "documentation": "4.0.0-beta8",
     "eslint": "^3.0.1",
-    "eslint-config-airbnb-base": "^4.0.0",
+    "eslint-config-airbnb-base": "^4.0.2",
     "eslint-plugin-ava": "^2.5.0",
     "eslint-plugin-babel": "^3.3.0",
     "eslint-plugin-import": "^1.10.2",
