@@ -7,6 +7,7 @@
   "parser": "babel-eslint",
   "rules": {
     "max-len": ["error", 140],
+    "linebreak-style": "off",
     "babel/arrow-parens": [2, "as-needed"],
     "ava/no-cb-test": 2,
     "ava/prefer-power-assert": 2,
