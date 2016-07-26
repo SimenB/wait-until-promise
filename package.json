@@ -17,7 +17,6 @@
     "posttravis": "nyc check-coverage --lines 100 --functions 100 --branches 100 --stmts 100 ava && nyc report --reporter=lcov",
     "pretravis": "npm run lint",
     "precover": "npm run clean",
-    "prelint": "npm run clean",
     "prepublish": "not-in-install && npm run compile && npm run doc || in-install",
     "postpublish": "git push --follow-tags",
     "pretest": "npm run lint",
