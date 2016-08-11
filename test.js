@@ -12,10 +12,9 @@ test.beforeEach('before', () => {
 test('resolve if function returns true', () => waitUntilPromise(() => true));
 
 test('resolve with the return value', async t => {
-  t.truthy(
-    await waitUntilPromise(() => 'this is a truthy value'),
-    'this is a truthy value'
-  );
+  const result = await waitUntilPromise(() => 'this is a truthy value');
+
+  t.true(result === 'this is a truthy value');
 });
 
 test('reject if function returns false', t => {
@@ -29,7 +28,7 @@ test('should allow setting custom Promise implementation', t => {
 
   waitUntilPromise(() => true);
 
-  t.truthy(resolve.called);
+  t.true(resolve.called);
 });
 
 test.serial('should allow setting custom maxWait', async t => {
@@ -39,10 +38,10 @@ test.serial('should allow setting custom maxWait', async t => {
 
   await waitUntilPromise(() => count++ > 0, 32);
 
-  t.truthy(global.setTimeout.calledOnce);
-  t.truthy(global.setInterval.calledOnce);
+  t.true(global.setTimeout.calledOnce);
+  t.true(global.setInterval.calledOnce);
 
-  t.truthy(global.setTimeout.getCall(0).args[1], 32);
+  t.true(global.setTimeout.getCall(0).args[1] === 32);
 
   global.setTimeout.restore();
   global.setInterval.restore();
@@ -55,10 +54,10 @@ test.serial('should allow setting custom checkDelay', async t => {
 
   await waitUntilPromise(() => count++ > 0, undefined, 32);
 
-  t.truthy(global.setTimeout.calledOnce);
-  t.truthy(global.setInterval.calledOnce);
+  t.true(global.setTimeout.calledOnce);
+  t.true(global.setInterval.calledOnce);
 
-  t.truthy(global.setInterval.getCall(0).args[1], 32);
+  t.true(global.setInterval.getCall(0).args[1] === 32);
 
   global.setTimeout.restore();
   global.setInterval.restore();
@@ -123,6 +122,6 @@ test.serial('should reject with TimeoutError if available', async t => {
   try {
     await waitUntilPromise(() => false);
   } catch (e) {
-    t.truthy(e instanceof BluebirdPromise.TimeoutError);
+    t.true(e instanceof BluebirdPromise.TimeoutError);
   }
 });
