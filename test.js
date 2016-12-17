@@ -27,13 +27,13 @@ test('reject if function returns false', async () => {
 });
 
 test('should allow setting custom Promise implementation', () => {
-  const resolve = sinon.spy();
+  const resolve = jest.fn();
 
   setPromiseImplementation({ resolve });
 
   waitUntilPromise(() => true);
 
-  expect(resolve.called).toEqual(true);
+  expect(resolve).toHaveBeenCalled();
 });
 
 test('should allow setting custom maxWait', async () => {
