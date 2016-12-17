@@ -1,7 +1,6 @@
 {
   "extends": [
     "simenb-base",
-    "simenb-ava",
     "simenb-jsdoc"
   ]
 }

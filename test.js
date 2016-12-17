@@ -1,73 +1,84 @@
-/* eslint import/no-extraneous-dependencies: ["error", { "devDependencies": true }] */
+/* eslint-env jest */
 
-import test from 'ava';
 import sinon from 'sinon';
 import BluebirdPromise from 'bluebird';
 import waitUntilPromise, { setPromiseImplementation } from './waitUntilPromise';
 
-test.beforeEach('before', () => {
+beforeEach(() => {
   setPromiseImplementation(Promise);
 });
 
 test('resolve if function returns true', () => waitUntilPromise(() => true));
 
-test('resolve with the return value', async t => {
+test('resolve with the return value', async () => {
   const result = await waitUntilPromise(() => 'this is a truthy value');
 
-  t.true(result === 'this is a truthy value');
+  expect(result).toEqual('this is a truthy value');
 });
 
-test('reject if function returns false', t => {
-  t.throws(waitUntilPromise(() => false), 'Wait until promise timed out');
+test('reject if function returns false', async () => {
+  expect.assertions(1);
+
+  try {
+    await waitUntilPromise(() => false);
+  } catch (e) {
+    expect(e.message).toEqual('Wait until promise timed out');
+  }
 });
 
-test('should allow setting custom Promise implementation', t => {
+test('should allow setting custom Promise implementation', () => {
   const resolve = sinon.spy();
 
   setPromiseImplementation({ resolve });
 
   waitUntilPromise(() => true);
 
-  t.true(resolve.called);
+  expect(resolve.called).toEqual(true);
 });
 
-test.serial('should allow setting custom maxWait', async t => {
+test('should allow setting custom maxWait', async () => {
   let count = 0;
   sinon.spy(global, 'setTimeout');
   sinon.spy(global, 'setInterval');
 
   await waitUntilPromise(() => count++ > 0, 32);
 
-  t.true(global.setTimeout.calledOnce);
-  t.true(global.setInterval.calledOnce);
+  expect(global.setTimeout.calledOnce).toEqual(true);
+  expect(global.setInterval.calledOnce).toEqual(true);
 
-  t.true(global.setTimeout.getCall(0).args[1] === 32);
+  expect(global.setTimeout.getCall(0).args[1]).toEqual(32);
 
   global.setTimeout.restore();
   global.setInterval.restore();
 });
 
-test.serial('should allow setting custom checkDelay', async t => {
+test('should allow setting custom checkDelay', async () => {
   let count = 0;
   sinon.spy(global, 'setTimeout');
   sinon.spy(global, 'setInterval');
 
   await waitUntilPromise(() => count++ > 0, undefined, 32);
 
-  t.true(global.setTimeout.calledOnce);
-  t.true(global.setInterval.calledOnce);
+  expect(global.setTimeout.calledOnce);
+  expect(global.setInterval.calledOnce);
 
-  t.true(global.setInterval.getCall(0).args[1] === 32);
+  expect(global.setInterval.getCall(0).args[1] === 32);
 
   global.setTimeout.restore();
   global.setInterval.restore();
 });
 
-test('should reject with the exception if the functions throws', t => {
-  t.throws(waitUntilPromise(() => ({}).someFunction()), /is not a function/);
+test('should reject with the exception if the functions throws', async () => {
+  expect.assertions(1);
+
+  try {
+    await waitUntilPromise(() => ({}).someFunction());
+  } catch (e) {
+    expect(e.message).toMatch(/is not a function/);
+  }
 });
 
-test.serial('should not call setTimeout or setInterval if function immediately returns truthy', async () => {
+test('should not call setTimeout or setInterval if function immediately returns truthy', async () => {
   sinon.spy(global, 'setTimeout');
   sinon.spy(global, 'setInterval');
 
@@ -80,7 +91,7 @@ test.serial('should not call setTimeout or setInterval if function immediately r
   global.setInterval.restore();
 });
 
-test.serial('should call setTimeout or setInterval once if function returns truthy', async () => {
+test('should call setTimeout or setInterval once if function returns truthy', async () => {
   let count = 0;
 
   sinon.spy(global, 'setTimeout');
@@ -94,34 +105,38 @@ test.serial('should call setTimeout or setInterval once if function returns trut
   global.setInterval.restore();
 });
 
-test('should reject in timer if function throws', t => {
+test('should reject in timer if function throws', async () => {
+  expect.assertions(1);
+
   let count = 0;
 
-  const prom = waitUntilPromise(() => {
-    if (count++ === 0) {
-      return;
-    }
+  try {
+    await waitUntilPromise(() => {
+      if (count++ === 0) {
+        return;
+      }
 
-    ({}).someFunction();
-  });
-
-  t.throws(prom, /is not a function/);
+      ({}).someFunction();
+    });
+  } catch (e) {
+    expect(e.message).toMatch(/is not a function/);
+  }
 });
 
-test.serial('should throw if no Promise is available', t => {
+test('should throw if no Promise is available', () => {
   setPromiseImplementation(null);
 
-  t.throws(() => waitUntilPromise(() => true), /Wait Until Promise: No global Promise available/);
+  expect(() => waitUntilPromise(() => true)).toThrow(/Wait Until Promise: No global Promise available/);
 });
 
-test.serial('should reject with TimeoutError if available', async t => {
-  t.plan(1);
+test('should reject with TimeoutError if available', async () => {
+  expect.assertions(1);
 
   setPromiseImplementation(BluebirdPromise);
 
   try {
     await waitUntilPromise(() => false);
   } catch (e) {
-    t.true(e instanceof BluebirdPromise.TimeoutError);
+    expect(e).toBeInstanceOf(BluebirdPromise.TimeoutError);
   }
 });

@@ -8,19 +8,17 @@
     "API.md"
   ],
   "scripts": {
-    "clean": "rimraf coverage/ .nyc_output/ index.js",
+    "clean": "del-cli coverage/ index.js",
     "compile": "babel waitUntilPromise.js -o index.js",
-    "cover": "nyc ava",
+    "cover": "jest --coverage",
     "doc": "documentation readme waitUntilPromise.js --readme-file API.md -s API --github",
-    "lint": "node-version-gte-4 && eslint . || node-version-lt-4",
-    "postcover": "nyc report --reporter=html",
-    "posttravis": "nyc check-coverage --lines 100 --functions 100 --branches 100 --stmts 100 ava && nyc report --reporter=lcov",
+    "lint": "eslint .",
     "pretravis": "npm run lint",
     "precover": "npm run clean",
     "prepublish": "not-in-install && npm run compile && npm run doc || in-install",
     "postpublish": "git push --follow-tags",
     "pretest": "npm run lint",
-    "test": "ava",
+    "test": "jest",
     "travis": "npm run cover"
   },
   "repository": "SimenB/wait-until-promise",
@@ -37,8 +35,8 @@
   },
   "homepage": "https://github.com/SimenB/wait-until-promise#readme",
   "devDependencies": {
-    "ava": "^0.17.0",
     "babel-cli": "^6.16.0",
+    "babel-plugin-transform-async-to-module-method": "^6.16.0",
     "babel-plugin-transform-es2015-arrow-functions": "^6.8.0",
     "babel-plugin-transform-es2015-block-scoping": "^6.15.0",
     "babel-plugin-transform-es2015-modules-umd": "^6.12.0",
@@ -48,21 +46,27 @@
     "bluebird": "^3.4.6",
     "codeclimate-test-reporter": "^0.4.0",
     "coveralls": "^2.11.14",
+    "del-cli": "^0.2.1",
     "documentation": "4.0.0-beta8",
     "eslint": "^3.8.0",
-    "eslint-config-simenb-ava": "^6.0.1",
     "eslint-config-simenb-base": "^9.0.0",
     "eslint-config-simenb-jsdoc": "^3.0.1",
     "in-publish": "^2.0.0",
-    "node-version-check": "^2.1.1",
-    "nyc": "^10.0.0",
-    "rimraf": "^2.5.4",
+    "jest": "^18.0.0",
     "sinon": "^1.17.6"
   },
   "dependencies": {},
-  "ava": {
-    "require": [
-      "babel-register"
-    ]
+  "engines": {
+    "node": ">=4"
+  },
+  "jest": {
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    }
   }
 }
