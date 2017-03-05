@@ -52,7 +52,7 @@
     "eslint-config-simenb-base": "^9.0.0",
     "eslint-config-simenb-jsdoc": "^3.0.1",
     "in-publish": "^2.0.0",
-    "jest": "^18.0.0",
+    "jest": "^19.0.2",
     "sinon": "^1.17.6"
   },
   "dependencies": {},
