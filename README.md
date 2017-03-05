@@ -10,6 +10,7 @@
 
 [![Dependency Status][david-image]][david-url]
 [![Dev Dependency Status][david-dev-image]][david-dev-url]
+[![Greenkeeper badge][greenkeeper-image]][greenkeeper-url]
 
 ## Usage
 
@@ -67,7 +68,7 @@ See [CHANGELOG.md](CHANGELOG.md)
 [npm-image]: https://img.shields.io/npm/v/wait-until-promise.svg
 [david-url]: https://david-dm.org/SimenB/wait-until-promise
 [david-image]: https://img.shields.io/david/SimenB/wait-until-promise.svg
-[david-dev-url]: https://david-dm.org/SimenB/wait-until-promise#info=devDependencies
+[david-dev-url]: https://david-dm.org/SimenB/wait-until-promise?type=dev
 [david-dev-image]: https://img.shields.io/david/dev/SimenB/wait-until-promise.svg
-[david-peer-url]: https://david-dm.org/SimenB/wait-until-promise#info=peerDependencies
-[david-peer-image]: https://img.shields.io/david/peer/SimenB/wait-until-promise.svg
+[greenkeeper-url]: https://greenkeeper.io/
+[greenkeeper-image]: https://badges.greenkeeper.io/SimenB/wait-until-promise.svg
