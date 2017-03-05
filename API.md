@@ -4,7 +4,7 @@
 
 ## setPromiseImplementation
 
-[waitUntilPromise.js:27-29](https://github.com/SimenB/wait-until-promise/blob/5c4b806fe9bb83d5070d9ad618b0180bc7bd29cb/waitUntilPromise.js#L27-L29 "Source code on GitHub")
+[waitUntilPromise.js:27-29](https://github.com/SimenB/wait-until-promise/blob/508c22a8e8c47b75a1f09c0fb8f7b0b182163e63/waitUntilPromise.js#L27-L29 "Source code on GitHub")
 
 Set a custom [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) implementation.
 
@@ -14,7 +14,7 @@ Set a custom [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/R
 
 ## waitUntilPromise
 
-[waitUntilPromise.js:42-86](https://github.com/SimenB/wait-until-promise/blob/5c4b806fe9bb83d5070d9ad618b0180bc7bd29cb/waitUntilPromise.js#L42-L86 "Source code on GitHub")
+[waitUntilPromise.js:42-92](https://github.com/SimenB/wait-until-promise/blob/508c22a8e8c47b75a1f09c0fb8f7b0b182163e63/waitUntilPromise.js#L42-L92 "Source code on GitHub")
 
 Create a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) that resolves if the given escapeFunction returns a truthy value, and rejects if it throws
 or does not return truthy within the given maxWait.
