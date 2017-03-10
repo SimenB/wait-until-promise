@@ -72,7 +72,7 @@ test('should reject with the exception if the functions throws', async () => {
   expect.assertions(1);
 
   try {
-    await waitUntilPromise(() => ({}).someFunction());
+    await waitUntilPromise(() => ({}.someFunction()));
   } catch (e) {
     expect(e.message).toMatch(/is not a function/);
   }
@@ -116,7 +116,7 @@ test('should reject in timer if function throws', async () => {
         return;
       }
 
-      ({}).someFunction();
+      ({}.someFunction());
     });
   } catch (e) {
     expect(e.message).toMatch(/is not a function/);
