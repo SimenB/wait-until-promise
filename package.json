@@ -50,6 +50,7 @@
     "documentation": "4.0.0-beta16",
     "eslint": "^3.8.0",
     "eslint-config-simenb-base": "^12.1.2",
+    "eslint-config-simenb-jest": "^1.0.0",
     "eslint-config-simenb-jsdoc": "^3.0.1",
     "in-publish": "^2.0.0",
     "jest": "^19.0.2",

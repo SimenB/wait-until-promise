@@ -1,4 +1,5 @@
 {
+  "root": true,
   "extends": [
     "simenb-base",
     "simenb-jsdoc"

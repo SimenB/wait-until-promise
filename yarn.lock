@@ -1825,6 +1825,12 @@ eslint-config-simenb-base@^12.1.2:
     eslint-plugin-import "^2.2.0"
     eslint-plugin-prettier "^2.0.1"
 
+eslint-config-simenb-jest@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-simenb-jest/-/eslint-config-simenb-jest-1.0.0.tgz#ba86f696dfc5476c37a0e551588edfb888e0573f"
+  dependencies:
+    eslint-plugin-jest "^19.0.1"
+
 eslint-config-simenb-jsdoc@^3.0.1:
   version "3.0.9"
   resolved "https://registry.yarnpkg.com/eslint-config-simenb-jsdoc/-/eslint-config-simenb-jsdoc-3.0.9.tgz#9f087cba82ced2405ee1a8334549e8c174317248"
@@ -1860,6 +1866,10 @@ eslint-plugin-import@^2.2.0:
     lodash.cond "^4.3.0"
     minimatch "^3.0.3"
     pkg-up "^1.0.0"
+
+eslint-plugin-jest@^19.0.1:
+  version "19.0.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-19.0.1.tgz#42a420e90e81aa74e162c16166e43a31b890eece"
 
 eslint-plugin-jsdoc@^2.4.0:
   version "2.4.0"

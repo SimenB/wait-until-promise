@@ -1,7 +1,5 @@
-/* eslint-env jest */
-
 import BluebirdPromise from 'bluebird';
-import waitUntilPromise, { setPromiseImplementation } from './waitUntilPromise';
+import waitUntilPromise, { setPromiseImplementation } from '../waitUntilPromise';
 
 beforeEach(() => {
   setPromiseImplementation(Promise);
