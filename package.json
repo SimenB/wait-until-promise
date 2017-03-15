@@ -53,8 +53,7 @@
     "eslint-config-simenb-jsdoc": "^3.0.1",
     "in-publish": "^2.0.0",
     "jest": "^19.0.2",
-    "prettier": "^0.22.0",
-    "sinon": "^2.0.0"
+    "prettier": "^0.22.0"
   },
   "dependencies": {},
   "engines": {

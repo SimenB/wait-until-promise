@@ -1,11 +1,14 @@
 /* eslint-env jest */
 
-import sinon from 'sinon';
 import BluebirdPromise from 'bluebird';
 import waitUntilPromise, { setPromiseImplementation } from './waitUntilPromise';
 
 beforeEach(() => {
   setPromiseImplementation(Promise);
+});
+
+beforeEach(() => {
+  jest.clearAllMocks();
 });
 
 test('resolve if function returns true', () => waitUntilPromise(() => true));
@@ -38,34 +41,28 @@ test('should allow setting custom Promise implementation', () => {
 
 test('should allow setting custom maxWait', async () => {
   let count = 0;
-  sinon.spy(global, 'setTimeout');
-  sinon.spy(global, 'setInterval');
+  jest.spyOn(global, 'setTimeout');
+  jest.spyOn(global, 'setInterval');
 
   await waitUntilPromise(() => count++ > 0, 32);
 
-  expect(global.setTimeout.calledOnce).toEqual(true);
-  expect(global.setInterval.calledOnce).toEqual(true);
+  expect(global.setTimeout).toHaveBeenCalledTimes(1);
+  expect(global.setInterval).toHaveBeenCalledTimes(1);
 
-  expect(global.setTimeout.getCall(0).args[1]).toEqual(32);
-
-  global.setTimeout.restore();
-  global.setInterval.restore();
+  expect(global.setTimeout).toHaveBeenCalledWith(expect.any(Function), 32);
 });
 
 test('should allow setting custom checkDelay', async () => {
   let count = 0;
-  sinon.spy(global, 'setTimeout');
-  sinon.spy(global, 'setInterval');
+  jest.spyOn(global, 'setTimeout');
+  jest.spyOn(global, 'setInterval');
 
   await waitUntilPromise(() => count++ > 0, undefined, 32);
 
-  expect(global.setTimeout.calledOnce);
-  expect(global.setInterval.calledOnce);
+  expect(global.setTimeout).toHaveBeenCalledTimes(1);
+  expect(global.setInterval).toHaveBeenCalledTimes(1);
 
-  expect(global.setInterval.getCall(0).args[1] === 32);
-
-  global.setTimeout.restore();
-  global.setInterval.restore();
+  expect(global.setInterval).toHaveBeenCalledWith(expect.any(Function), 32);
 });
 
 test('should reject with the exception if the functions throws', async () => {
@@ -79,30 +76,24 @@ test('should reject with the exception if the functions throws', async () => {
 });
 
 test('should not call setTimeout or setInterval if function immediately returns truthy', async () => {
-  sinon.spy(global, 'setTimeout');
-  sinon.spy(global, 'setInterval');
+  jest.spyOn(global, 'setTimeout');
+  jest.spyOn(global, 'setInterval');
 
   await waitUntilPromise(() => true);
 
-  sinon.assert.notCalled(global.setTimeout);
-  sinon.assert.notCalled(global.setInterval);
-
-  global.setTimeout.restore();
-  global.setInterval.restore();
+  expect(global.setTimeout).not.toHaveBeenCalled();
+  expect(global.setInterval).not.toHaveBeenCalled();
 });
 
 test('should call setTimeout or setInterval once if function returns truthy', async () => {
   let count = 0;
 
-  sinon.spy(global, 'setTimeout');
-  sinon.spy(global, 'setInterval');
+  jest.spyOn(global, 'setTimeout');
+  jest.spyOn(global, 'setInterval');
 
   await waitUntilPromise(() => count++ > 0);
-  sinon.assert.callCount(global.setTimeout, 1);
-  sinon.assert.callCount(global.setInterval, 1);
-
-  global.setTimeout.restore();
-  global.setInterval.restore();
+  expect(global.setTimeout).toHaveBeenCalledTimes(1);
+  expect(global.setInterval).toHaveBeenCalledTimes(1);
 });
 
 test('should reject in timer if function throws', async () => {
