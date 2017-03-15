@@ -54,7 +54,7 @@
     "in-publish": "^2.0.0",
     "jest": "^19.0.2",
     "prettier": "^0.22.0",
-    "sinon": "^1.17.6"
+    "sinon": "^2.0.0"
   },
   "dependencies": {},
   "engines": {
