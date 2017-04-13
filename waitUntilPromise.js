@@ -56,37 +56,31 @@ export default (escapeFunction, maxWait = 50, checkDelay = 1) => {
   return new PromiseImplementation((resolve, reject) => {
     let maxWaitTimeout;
 
-    const interval = setInterval(
-      () => {
-        try {
-          const escapeFunctionRes = escapeFunction();
+    const interval = setInterval(() => {
+      try {
+        const escapeFunctionRes = escapeFunction();
 
-          if (escapeFunctionRes) {
-            clearTimers(maxWaitTimeout, interval);
-
-            resolve(escapeFunctionRes);
-          }
-        } catch (e) {
+        if (escapeFunctionRes) {
           clearTimers(maxWaitTimeout, interval);
 
-          reject(e);
+          resolve(escapeFunctionRes);
         }
-      },
-      checkDelay
-    );
-
-    maxWaitTimeout = setTimeout(
-      () => {
+      } catch (e) {
         clearTimers(maxWaitTimeout, interval);
 
-        // Try to reject with a TimeoutError, like Bluebird has
-        if (PromiseImplementation.TimeoutError) {
-          reject(new PromiseImplementation.TimeoutError('Wait until promise timed out'));
-        } else {
-          reject(new Error('Wait until promise timed out'));
-        }
-      },
-      maxWait
-    );
+        reject(e);
+      }
+    }, checkDelay);
+
+    maxWaitTimeout = setTimeout(() => {
+      clearTimers(maxWaitTimeout, interval);
+
+      // Try to reject with a TimeoutError, like Bluebird has
+      if (PromiseImplementation.TimeoutError) {
+        reject(new PromiseImplementation.TimeoutError('Wait until promise timed out'));
+      } else {
+        reject(new Error('Wait until promise timed out'));
+      }
+    }, maxWait);
   });
 };
