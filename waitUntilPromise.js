@@ -34,8 +34,8 @@ export const setPromiseImplementation = implementation => {
  *
  * @param {Function} escapeFunction - The function called every checkDelay, and the result of which is the resolved
  * value of the promise.
- * @param {number} [maxWait=50] - The time to wait before rejecting the promise.
- * @param {number} [checkDelay=1] - The time to wait before each invocation of {escapeFunction}.
+ * @param {number} maxWait - The time to wait before rejecting the promise.
+ * @param {number} checkDelay - The time to wait before each invocation of {escapeFunction}.
  * @returns {Promise} A promise resolved with the value of escapeFunction, or rejected with the exception thrown by it
  * or it times out.
  */
