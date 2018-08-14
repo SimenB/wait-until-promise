@@ -43,7 +43,8 @@ describe('some thing', () => {
     button.click();
 
     waitUntil(() => paragraph.text())
-      .then((text) => expect(test).toBe('The text in the paragraph'));
+      .then((text) => expect(text).toBe('The text in the paragraph'))
+      .then(() => done());
   })
 })
 ```
