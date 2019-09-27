@@ -60,11 +60,19 @@ export default (escapeFunction, maxWait = 50, checkDelay = 1) => {
       try {
         const escapeFunctionRes = escapeFunction();
 
-        if (escapeFunctionRes) {
-          clearTimers(maxWaitTimeout, interval);
-
-          resolve(escapeFunctionRes);
+        let resultPromise;
+        if (escapeFunctionRes && escapeFunctionRes.then) {
+          resultPromise = escapeFunctionRes;
+        } else {
+          resultPromise = PromiseImplementation.resolve(escapeFunctionRes);
         }
+
+        resultPromise.then(res => {
+          if (res) {
+            clearTimers(maxWaitTimeout, interval);
+            resolve(res);
+          }
+        });
       } catch (e) {
         clearTimers(maxWaitTimeout, interval);
 
