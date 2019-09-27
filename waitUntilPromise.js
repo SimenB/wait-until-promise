@@ -33,7 +33,7 @@ export const setPromiseImplementation = implementation => {
  * or does not return truthy within the given maxWait.
  *
  * @param {Function} escapeFunction - The function called every checkDelay, and the result of which is the resolved
- * value of the promise.
+ * value of the promise. If it returns {@link Promise} its result will be waited for and checked.
  * @param {number} maxWait - The time to wait before rejecting the promise.
  * @param {number} checkDelay - The time to wait before each invocation of {escapeFunction}.
  * @returns {Promise} A promise resolved with the value of escapeFunction, or rejected with the exception thrown by it
@@ -42,15 +42,6 @@ export const setPromiseImplementation = implementation => {
 export default (escapeFunction, maxWait = 50, checkDelay = 1) => {
   if (PromiseImplementation == null) {
     throw new Error('Wait Until Promise: No global Promise available, make sure to use `setPromiseImplementation`.');
-  }
-
-  // Run the function once without setting up any listeners in case it's already true
-  try {
-    const escapeFunctionRes = escapeFunction();
-
-    if (escapeFunctionRes) return PromiseImplementation.resolve(escapeFunctionRes);
-  } catch (e) {
-    return PromiseImplementation.reject(e);
   }
 
   return new PromiseImplementation((resolve, reject) => {
