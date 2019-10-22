@@ -44,6 +44,15 @@ export default (escapeFunction, maxWait = 50, checkDelay = 1) => {
     throw new Error('Wait Until Promise: No global Promise available, make sure to use `setPromiseImplementation`.');
   }
 
+  // Run the function once without setting up any listeners in case it's already true
+  try {
+    const escapeFunctionRes = escapeFunction();
+
+    if (escapeFunctionRes && !escapeFunctionRes.then) return PromiseImplementation.resolve(escapeFunctionRes);
+  } catch (e) {
+    return PromiseImplementation.reject(e);
+  }
+
   return new PromiseImplementation((resolve, reject) => {
     let maxWaitTimeout;
 
