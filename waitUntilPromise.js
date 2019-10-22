@@ -67,7 +67,7 @@ export default (escapeFunction, maxWait = 50, checkDelay = 1) => {
           resultPromise = PromiseImplementation.resolve(escapeFunctionRes);
         }
 
-        resultPromise.then(res => {
+        resultPromise.then((res) => {
           if (res) {
             clearTimers(maxWaitTimeout, interval);
             resolve(res);
