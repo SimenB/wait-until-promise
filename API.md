@@ -22,7 +22,7 @@ or does not return truthy within the given maxWait.
 **Parameters**
 
 -   `escapeFunction` **[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** The function called every checkDelay, and the result of which is the resolved
-    value of the promise.
+    value of the promise. If it returns [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) its result will be waited for and checked.
 -   `maxWait` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** The time to wait before rejecting the promise. (optional, default `50`)
 -   `checkDelay` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** The time to wait before each invocation of {escapeFunction}. (optional, default `1`)
 
