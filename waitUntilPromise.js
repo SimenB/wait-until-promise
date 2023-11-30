@@ -33,7 +33,7 @@ export const setPromiseImplementation = implementation => {
  * or does not return truthy within the given maxWait.
  *
  * @param {Function} escapeFunction - The function called every checkDelay, and the result of which is the resolved
- * value of the promise.
+ * value of the promise. If it returns {@link Promise} its result will be waited for and checked.
  * @param {number} maxWait - The time to wait before rejecting the promise.
  * @param {number} checkDelay - The time to wait before each invocation of {escapeFunction}.
  * @returns {Promise} A promise resolved with the value of escapeFunction, or rejected with the exception thrown by it
@@ -48,7 +48,7 @@ export default (escapeFunction, maxWait = 50, checkDelay = 1) => {
   try {
     const escapeFunctionRes = escapeFunction();
 
-    if (escapeFunctionRes) return PromiseImplementation.resolve(escapeFunctionRes);
+    if (escapeFunctionRes && !escapeFunctionRes.then) return PromiseImplementation.resolve(escapeFunctionRes);
   } catch (e) {
     return PromiseImplementation.reject(e);
   }
@@ -60,11 +60,19 @@ export default (escapeFunction, maxWait = 50, checkDelay = 1) => {
       try {
         const escapeFunctionRes = escapeFunction();
 
-        if (escapeFunctionRes) {
-          clearTimers(maxWaitTimeout, interval);
-
-          resolve(escapeFunctionRes);
+        let resultPromise;
+        if (escapeFunctionRes && escapeFunctionRes.then) {
+          resultPromise = escapeFunctionRes;
+        } else {
+          resultPromise = PromiseImplementation.resolve(escapeFunctionRes);
         }
+
+        resultPromise.then((res) => {
+          if (res) {
+            clearTimers(maxWaitTimeout, interval);
+            resolve(res);
+          }
+        });
       } catch (e) {
         clearTimers(maxWaitTimeout, interval);
 
