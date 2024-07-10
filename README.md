@@ -52,7 +52,7 @@ See [CHANGELOG.md](CHANGELOG.md)
 
 
 [ci-url]: https://github.com/SimenB/wait-until-promise/actions/workflows/ci.yml?query=branch:master
-[ci-image]: https://img.shields.io/github/actions/workflow/status/SimenB/wait-until-promise/ci.yaml?branch=master
+[ci-image]: https://img.shields.io/github/actions/workflow/status/SimenB/wait-until-promise/ci.yml?branch=master
 [coveralls-url]: https://coveralls.io/github/SimenB/wait-until-promise
 [coveralls-image]: https://img.shields.io/coveralls/SimenB/wait-until-promise.svg
 [npm-url]: https://npmjs.org/package/wait-until-promise
