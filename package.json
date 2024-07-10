@@ -35,6 +35,8 @@
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^22.0.0",
     "bluebird": "^3.4.6",
     "del-cli": "^1.0.0",
     "documentation": "^11.0.0",
@@ -61,7 +63,8 @@
         "lines": 100,
         "statements": 100
       }
-    }
+    },
+    "testEnvironment": "node"
   },
   "packageManager": "yarn@1.22.22+sha256.c17d3797fb9a9115bf375e31bfd30058cac6bc9c3b8807a3d8cb2094794b51ca"
 }
