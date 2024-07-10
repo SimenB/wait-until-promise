@@ -61,3 +61,7 @@ jobs:
 
       - name: Run unit tests
         run: yarn cover
+
+      - name: Coveralls
+        if: always()
+        uses: coverallsapp/github-action@v2
