@@ -3,14 +3,8 @@
 > Test utility to simplify waiting for a condition
 
 [![NPM Version][npm-image]][npm-url]
-[![Linux build Status][travis-image]][travis-url]
-[![Windows Build Status][appveyor-image]][appveyor-url]
+[![CI build Status][ci-image]][ci-url]
 [![Coverage Status][coveralls-image]][coveralls-url]
-[![Codeclimate Status][codeclimate-image]][codeclimate-url]
-
-[![Dependency Status][david-image]][david-url]
-[![Dev Dependency Status][david-dev-image]][david-dev-url]
-[![Greenkeeper badge][greenkeeper-image]][greenkeeper-url]
 
 ## Usage
 
@@ -57,19 +51,9 @@ See [API.md](API.md)
 See [CHANGELOG.md](CHANGELOG.md)
 
 
-[travis-url]: https://travis-ci.org/SimenB/wait-until-promise
-[travis-image]: https://img.shields.io/travis/SimenB/wait-until-promise.svg
-[appveyor-url]: https://ci.appveyor.com/project/SimenB/wait-until-promise
-[appveyor-image]: https://ci.appveyor.com/api/projects/status/44aotxjicwqs3nnb?svg=true
+[ci-url]: https://github.com/SimenB/wait-until-promise/actions/workflows/ci.yml?query=branch:master
+[ci-image]: https://img.shields.io/github/actions/workflow/status/SimenB/wait-until-promise/ci.yaml?branch=master
 [coveralls-url]: https://coveralls.io/github/SimenB/wait-until-promise
 [coveralls-image]: https://img.shields.io/coveralls/SimenB/wait-until-promise.svg
-[codeclimate-url]: https://codeclimate.com/github/SimenB/wait-until-promise
-[codeclimate-image]: https://img.shields.io/codeclimate/github/SimenB/wait-until-promise.svg
 [npm-url]: https://npmjs.org/package/wait-until-promise
 [npm-image]: https://img.shields.io/npm/v/wait-until-promise.svg
-[david-url]: https://david-dm.org/SimenB/wait-until-promise
-[david-image]: https://img.shields.io/david/SimenB/wait-until-promise.svg
-[david-dev-url]: https://david-dm.org/SimenB/wait-until-promise?type=dev
-[david-dev-image]: https://img.shields.io/david/dev/SimenB/wait-until-promise.svg
-[greenkeeper-url]: https://greenkeeper.io/
-[greenkeeper-image]: https://badges.greenkeeper.io/SimenB/wait-until-promise.svg

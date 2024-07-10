@@ -1,0 +1,67 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}=${{ github.head_ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    name: Build, Lint, Test
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [6.x, 8.x, 10.x, 12.x, 14.x, 16.x, 18.x, 20.x, 22.x]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run linter
+        run: yarn lint
+
+      - name: Run unit tests
+        run: yarn cover
+
+      - name: Coveralls
+        if: always()
+        uses: coverallsapp/github-action@v2
+  ci-other-os:
+    name: Build, Lint, Test
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run linter
+        run: yarn lint
+
+      - name: Run unit tests
+        run: yarn test

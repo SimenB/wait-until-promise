@@ -13,13 +13,10 @@
     "cover": "jest --coverage",
     "doc": "documentation readme waitUntilPromise.js --readme-file API.md -s API --github",
     "lint": "eslint .",
-    "pretravis": "npm run lint",
-    "precover": "npm run clean",
-    "prepublish": "not-in-install && npm run compile && npm run doc || in-install",
+    "precover": "yarn run clean",
+    "prepublish": "not-in-install && yarn run compile && yarn run doc || in-install",
     "postpublish": "git push --follow-tags",
-    "pretest": "npm run lint",
-    "test": "jest",
-    "travis": "npm run cover"
+    "test": "jest"
   },
   "repository": "SimenB/wait-until-promise",
   "keywords": [
@@ -44,8 +41,6 @@
     "babel-plugin-transform-es3-member-expression-literals": "^6.8.0",
     "babel-register": "^6.16.3",
     "bluebird": "^3.4.6",
-    "codeclimate-test-reporter": "^0.4.0",
-    "coveralls": "^2.11.14",
     "del-cli": "^1.0.0",
     "documentation": "^4.0.0-rc.1",
     "eslint": "^3.8.0",
@@ -58,7 +53,7 @@
   },
   "dependencies": {},
   "engines": {
-    "node": ">=4"
+    "node": ">=6"
   },
   "jest": {
     "coverageThreshold": {
@@ -69,5 +64,6 @@
         "statements": 100
       }
     }
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha256.c17d3797fb9a9115bf375e31bfd30058cac6bc9c3b8807a3d8cb2094794b51ca"
 }
