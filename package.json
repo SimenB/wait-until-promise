@@ -53,7 +53,7 @@
     "node": ">=6"
   },
   "resolutions": {
-    "stack-utils": "1.0.2"
+    "stack-utils": "1.0.5"
   },
   "jest": {
     "coverageThreshold": {
