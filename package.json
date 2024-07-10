@@ -32,28 +32,28 @@
   },
   "homepage": "https://github.com/SimenB/wait-until-promise#readme",
   "devDependencies": {
-    "babel-cli": "^6.16.0",
-    "babel-plugin-transform-async-to-module-method": "^6.16.0",
-    "babel-plugin-transform-es2015-arrow-functions": "^6.8.0",
-    "babel-plugin-transform-es2015-block-scoping": "^6.15.0",
-    "babel-plugin-transform-es2015-modules-umd": "^6.12.0",
-    "babel-plugin-transform-es2015-parameters": "^6.17.0",
-    "babel-plugin-transform-es3-member-expression-literals": "^6.8.0",
-    "babel-register": "^6.16.3",
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^22.0.0",
     "bluebird": "^3.4.6",
     "del-cli": "^1.0.0",
-    "documentation": "^8.0.0",
+    "documentation": "^11.0.0",
     "eslint": "^3.8.0",
     "eslint-config-simenb-base": "^12.1.2",
     "eslint-config-simenb-jest": "^2.0.0",
     "eslint-config-simenb-jsdoc": "^3.0.1",
     "in-publish": "^2.0.0",
-    "jest": "^20.0.0",
+    "jest": "^22.0.0",
     "prettier": "^1.0.2"
   },
   "dependencies": {},
   "engines": {
     "node": ">=6"
+  },
+  "resolutions": {
+    "stack-utils": "1.0.2"
   },
   "jest": {
     "coverageThreshold": {
@@ -63,7 +63,8 @@
         "lines": 100,
         "statements": 100
       }
-    }
+    },
+    "testEnvironment": "node"
   },
   "packageManager": "yarn@1.22.22+sha256.c17d3797fb9a9115bf375e31bfd30058cac6bc9c3b8807a3d8cb2094794b51ca"
 }

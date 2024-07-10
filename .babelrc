@@ -1,19 +1,13 @@
 {
-  "plugins": [
-    ["transform-es2015-modules-umd", { "loose": true }],
-    "transform-es2015-block-scoping",
-    "transform-es2015-parameters",
-    "transform-es2015-arrow-functions",
-    "transform-es3-member-expression-literals"
-  ],
-  "env": {
-    "test": {
-      "plugins": [
-        ["transform-async-to-module-method", {
-          "module": "bluebird",
-          "method": "coroutine"
-        }]
-      ]
-    }
-  }
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "modules": "umd",
+        "targets": {
+          "node": "6"
+        }
+      }
+    ]
+  ]
 }
