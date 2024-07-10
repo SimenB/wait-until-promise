@@ -43,7 +43,7 @@
     "eslint": "^3.8.0",
     "eslint-config-simenb-base": "^12.1.2",
     "eslint-config-simenb-jest": "^2.0.0",
-    "eslint-config-simenb-jsdoc": "^3.0.1",
+    "eslint-config-simenb-jsdoc": "^5.0.0",
     "in-publish": "^2.0.0",
     "jest": "^22.0.0",
     "prettier": "^1.0.2"
