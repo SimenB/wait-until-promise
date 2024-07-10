@@ -37,6 +37,10 @@ jobs:
 
       - name: Run unit tests
         run: yarn cover
+
+      - name: Coveralls
+        if: always()
+        uses: coverallsapp/github-action@v2
   ci-other-os:
     name: Build, Lint, Test
     runs-on: ${{ matrix.os }}
