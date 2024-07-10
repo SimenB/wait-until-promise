@@ -16,7 +16,6 @@
     "precover": "yarn run clean",
     "prepublish": "not-in-install && yarn run compile && yarn run doc || in-install",
     "postpublish": "git push --follow-tags",
-    "pretest": "yarn run lint",
     "test": "jest"
   },
   "repository": "SimenB/wait-until-promise",
