@@ -20,7 +20,7 @@ jobs:
       matrix:
         node-version: [6.x, 8.x, 10.x, 12.x, 14.x, 16.x, 18.x, 20.x, 22.x]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           persist-credentials: false
 
@@ -48,7 +48,7 @@ jobs:
       matrix:
         os: [macos-latest, windows-latest]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           persist-credentials: false
 
