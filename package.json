@@ -32,9 +32,9 @@
   },
   "homepage": "https://github.com/SimenB/wait-until-promise#readme",
   "devDependencies": {
-    "@babel/cli": "^7.0.0",
+    "@babel/cli": "^8.0.0",
     "@babel/core": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-env": "^8.0.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^22.0.0",
     "bluebird": "^3.4.6",
