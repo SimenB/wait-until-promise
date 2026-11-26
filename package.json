@@ -54,7 +54,7 @@
   },
   "resolutions": {
     "stack-utils": "1.0.2",
-    "node-releases": "2.0.44",
+    "node-releases": "2.0.66",
     "sax": "1.4.3"
   },
   "jest": {
